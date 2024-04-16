@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/pages/first_page.dart';
 import 'package:todo_app/pages/home_page.dart';
 import 'package:todo_app/pages/settings_page.dart';
 
@@ -14,14 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-        home: FirstPage(),
-        // using routes
-        routes: {
-          '/homepage': (context) => HomePage(),
-          '/firstpage': (context) => FirstPage(),
-          '/settingspage': (context) => SettingsPage(),
-        }
-            
+        home: HomePage(),
+        // using themes
+        theme: ThemeData(primarySwatch: Colors.yellow),
     );
   }
 }
