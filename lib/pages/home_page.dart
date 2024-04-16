@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../utils/todo_tile.dart';
+import '../utils/dialog_box.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,19 +9,44 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>{
+class _HomePageState extends State<HomePage> {
+  // text controller
+  final _controller = TextEditingController();
 
   //list of todo tasks
   List toDoList = [
-    ["Create NeateWear App",false],
+    ["Create NeateWear App", false],
     ["Do Exercise", false],
   ];
 
   //checkbox was tapped
-  void checkBoxChanged(bool? value, int index){
-    setState((){
-      toDoList[index][1]= !toDoList[index][1];
+  void checkBoxChanged(bool? value, int index) {
+    setState(() {
+      toDoList[index][1] = !toDoList[index][1];
     });
+  }
+
+// save new task
+  void saveNewTask() {
+    setState(() {
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
+//createNewTask
+  void createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DialogBox(
+          controller: _controller,
+          onSave: saveNewTask,
+          onCancel: () => Navigator.of(context).pop(),
+        );
+      },
+    );
   }
 
   @override
@@ -38,9 +64,9 @@ class _HomePageState extends State<HomePage>{
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-
-        },
+        onPressed: createNewTask,
+        child: Icon(Icons.add),
+        backgroundColor: Colors.yellow[300],
       ), // FloationActionButton
       body: ListView.builder(
         itemCount: toDoList.length,
