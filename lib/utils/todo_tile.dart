@@ -15,6 +15,8 @@ class ToDoTile extends StatelessWidget {
     required this.deleteFunction,
   });
 
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +26,7 @@ class ToDoTile extends StatelessWidget {
           motion: StretchMotion(),
           children: [
             SlidableAction(
-              onPressed: deletefunction,
+              onPressed: deleteFunction,
               icon: Icons.delete,
               backgroundColor: Colors.red.shade300,
               borderRadius: BorderRadius.circular(12),
