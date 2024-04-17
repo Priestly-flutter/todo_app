@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ToDoTile extends StatelessWidget {
   final String taskName;
@@ -27,9 +26,9 @@ class ToDoTile extends StatelessWidget {
             SlidableAction(
               onPressed: deletefunction,
               icon: Icons.delete,
-              backgroundColor: Colors.red[300],
-              border: BorderRadius.circular(12),
-            )
+              backgroundColor: Colors.red.shade300,
+              borderRadius: BorderRadius.circular(12),
+            ),
           ],
         ),
         child: Container(
